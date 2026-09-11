@@ -402,3 +402,122 @@ if (terminalBody) {
     terminalInput.focus();
   }, 300);
 }
+
+/* ===== E5 — PAGE MOTION ===== */
+
+const createScrollTelemetry = () => {
+  const progress = document.createElement('div');
+  progress.className = 'scroll-progress';
+  progress.setAttribute('aria-hidden', 'true');
+
+  const bar = document.createElement('div');
+  bar.className = 'scroll-progress-bar';
+
+  const label = document.createElement('div');
+  label.className = 'scroll-progress-label';
+  label.innerHTML = 'SCROLL <span>0%</span>';
+
+  progress.append(bar, label);
+  document.body.appendChild(progress);
+
+  const hero = document.querySelector('.hero');
+  const labelValue = label.querySelector('span');
+
+  let ticking = false;
+
+  const updateScrollState = () => {
+    const scrollTop = window.scrollY;
+    const documentHeight =
+      document.documentElement.scrollHeight - window.innerHeight;
+
+    const percentage = documentHeight > 0
+      ? Math.min(100, Math.max(0, (scrollTop / documentHeight) * 100))
+      : 0;
+
+    const rounded = Math.round(percentage);
+
+    bar.style.height = `${percentage}%`;
+    labelValue.textContent = `${rounded}%`;
+
+    if (hero && window.innerWidth > 800) {
+      const heroHeight = hero.offsetHeight || 1;
+      const heroProgress = Math.min(scrollTop / heroHeight, 1);
+
+      const shift = -(heroProgress * 22);
+      hero.style.setProperty('--hero-shift', `${shift}px`);
+    }
+
+    ticking = false;
+  };
+
+  const requestScrollUpdate = () => {
+    if (!ticking) {
+      window.requestAnimationFrame(updateScrollState);
+      ticking = true;
+    }
+  };
+
+  window.addEventListener('scroll', requestScrollUpdate, {
+    passive: true
+  });
+
+  window.addEventListener('resize', requestScrollUpdate);
+
+  updateScrollState();
+};
+
+createScrollTelemetry();
+
+
+/*
+ * E5 section coordination
+ *
+ * One scroll position controls:
+ * - active navigation
+ * - scroll telemetry
+ * - hero depth
+ *
+ * The original reveal observer remains responsible for
+ * reveal-once element animation.
+ */
+
+const syncPageState = () => {
+  const sections = navSections.map(item => item.section);
+
+  if (!sections.length) return;
+
+  const activationLine = window.innerHeight * 0.34;
+
+  let activeSection = sections[0];
+
+  for (const section of sections) {
+    const rect = section.getBoundingClientRect();
+
+    if (rect.top <= activationLine) {
+      activeSection = section;
+    }
+  }
+
+  setActiveNav(activeSection.id);
+};
+
+let pageStateTicking = false;
+
+const requestPageStateSync = () => {
+  if (pageStateTicking) return;
+
+  window.requestAnimationFrame(() => {
+    syncPageState();
+    pageStateTicking = false;
+  });
+
+  pageStateTicking = true;
+};
+
+window.addEventListener('scroll', requestPageStateSync, {
+  passive: true
+});
+
+window.addEventListener('resize', requestPageStateSync);
+
+syncPageState();
