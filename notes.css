@@ -1,0 +1,696 @@
+/* ============================================================
+   ENGINEERING NOTES
+   ============================================================ */
+
+.notes-hero {
+  min-height: 78vh;
+  display: flex;
+  align-items: center;
+}
+
+.notes-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--line);
+  color: #777;
+  font: 600 10px var(--mono);
+  letter-spacing: .08em;
+}
+
+.notes-meta strong {
+  color: var(--lime);
+  font-weight: 600;
+}
+
+.notes-intro {
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 80px;
+  align-items: end;
+  padding: 70px 0 90px;
+}
+
+.notes-intro h1 {
+  margin: 18px 0 0;
+  font-size: clamp(72px, 11vw, 160px);
+  line-height: .82;
+  letter-spacing: -.07em;
+}
+
+.notes-intro h1 em {
+  color: var(--lime);
+  font-style: normal;
+}
+
+.notes-intro-copy {
+  max-width: 480px;
+  padding-bottom: 8px;
+}
+
+.notes-intro-copy p {
+  margin: 0;
+  color: #aaa;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.notes-intro-copy span {
+  color: #555;
+  font: 600 10px var(--mono);
+  letter-spacing: .06em;
+}
+
+.notes-rule {
+  width: 100%;
+  height: 1px;
+  margin: 35px 0 22px;
+  background: var(--line);
+}
+
+
+/* ------------------------------------------------------------
+   NOTES LIST
+   ------------------------------------------------------------ */
+
+.notes-list-section {
+  padding-top: 0;
+}
+
+.notes-list {
+  border-top: 1px solid var(--line);
+}
+
+.note-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 80px 180px 1fr 180px;
+  gap: 30px;
+  align-items: center;
+  min-height: 190px;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--line);
+  text-decoration: none;
+  color: inherit;
+  transition:
+    padding .3s ease,
+    background .3s ease;
+}
+
+.note-row::before {
+  content: "";
+  position: absolute;
+  inset: 0 -25px;
+  background: rgba(255,255,255,.025);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease;
+}
+
+.note-row:hover {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.note-row:hover::before {
+  opacity: 1;
+}
+
+.note-number {
+  position: relative;
+  z-index: 1;
+  color: var(--lime);
+  font: 600 11px var(--mono);
+}
+
+.note-category {
+  position: relative;
+  z-index: 1;
+  color: #555;
+  font: 600 10px var(--mono);
+  letter-spacing: .06em;
+}
+
+.note-content {
+  position: relative;
+  z-index: 1;
+}
+
+.note-title {
+  margin: 0;
+  color: #ddd;
+  font: 600 clamp(22px, 3vw, 38px)/1.05 var(--mono);
+  letter-spacing: -.03em;
+}
+
+.note-subtitle {
+  margin: 12px 0 0;
+  color: #777;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.note-project {
+  position: relative;
+  z-index: 1;
+  justify-self: end;
+  color: #555;
+  font: 600 10px var(--mono);
+  text-align: right;
+  letter-spacing: .05em;
+}
+
+.note-arrow {
+  display: inline-block;
+  margin-left: 8px;
+  color: var(--lime);
+  transition: transform .25s ease;
+}
+
+.note-row:hover .note-arrow {
+  transform: translateX(5px);
+}
+
+
+/* ------------------------------------------------------------
+   FOOTER
+   ------------------------------------------------------------ */
+
+.notes-footer {
+  padding-top: 0;
+}
+
+.notes-footer-grid {
+  display: grid;
+  grid-template-columns: 180px 1fr auto;
+  gap: 40px;
+  align-items: center;
+  min-height: 190px;
+  border-bottom: 1px solid var(--line);
+}
+
+.notes-footer-grid > span {
+  color: var(--lime);
+  font: 600 10px var(--mono);
+  letter-spacing: .06em;
+}
+
+.notes-footer-grid p {
+  max-width: 420px;
+  margin: 0;
+  color: #777;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+
+/* ------------------------------------------------------------
+   RESPONSIVE
+   ------------------------------------------------------------ */
+
+@media (max-width: 900px) {
+
+  .notes-intro {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .note-row {
+    grid-template-columns: 60px 1fr auto;
+    gap: 20px;
+  }
+
+  .note-category {
+    display: none;
+  }
+
+  .note-project {
+    font-size: 9px;
+  }
+
+  .notes-footer-grid {
+    grid-template-columns: 1fr auto;
+  }
+
+  .notes-footer-grid p {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .notes-hero {
+    min-height: auto;
+    padding-top: 100px;
+  }
+
+  .notes-intro {
+    padding: 55px 0 70px;
+  }
+
+  .notes-intro h1 {
+    font-size: clamp(64px, 20vw, 100px);
+  }
+
+  .notes-intro-copy p {
+    font-size: 14px;
+  }
+
+  .note-row {
+    grid-template-columns: 45px 1fr;
+    min-height: 170px;
+    gap: 15px;
+    padding: 28px 0;
+  }
+
+  .note-project {
+    grid-column: 2;
+    justify-self: start;
+    text-align: left;
+  }
+
+  .note-title {
+    font-size: 23px;
+  }
+
+  .note-subtitle {
+    font-size: 12px;
+  }
+
+  .notes-footer-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    padding: 35px 0;
+  }
+
+}
+
+
+/* ------------------------------------------------------------
+   REDUCED MOTION
+   ------------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .note-row,
+  .note-row::before,
+  .note-arrow {
+    transition: none;
+  }
+
+}
+
+
+/* ============================================================
+   INDIVIDUAL ENGINEERING NOTE
+   ============================================================ */
+
+.note-hero {
+  min-height: 72vh;
+  display: flex;
+  align-items: center;
+}
+
+.note-hero-meta {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--line);
+
+  color: #666;
+  font: 600 10px var(--mono);
+  letter-spacing: .08em;
+}
+
+.note-hero-meta strong {
+  color: var(--lime);
+  font-weight: 600;
+}
+
+.note-hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap: 90px;
+  align-items: end;
+  padding: 75px 0 90px;
+}
+
+.note-hero-title h1 {
+  max-width: 900px;
+  margin: 18px 0 0;
+
+  color: #ddd;
+  font: 600 clamp(64px, 10vw, 150px)/.82 var(--mono);
+  letter-spacing: -.07em;
+}
+
+.note-hero-title p {
+  max-width: 620px;
+  margin: 30px 0 0;
+
+  color: #777;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.note-hero-side {
+  max-width: 400px;
+  padding-bottom: 8px;
+}
+
+.note-status {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  margin-bottom: 25px;
+
+  color: var(--lime);
+  font: 600 10px var(--mono);
+  letter-spacing: .06em;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--lime);
+  box-shadow: 0 0 10px rgba(190,255,80,.5);
+}
+
+.note-hero-side p {
+  margin: 0;
+
+  color: #777;
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+
+/* ------------------------------------------------------------
+   NOTE SECTIONS
+   ------------------------------------------------------------ */
+
+.note-section {
+  padding-top: 0;
+}
+
+.note-section-label {
+  padding: 0 0 25px;
+
+  border-bottom: 1px solid var(--line);
+
+  color: var(--lime);
+  font: 600 10px var(--mono);
+  letter-spacing: .06em;
+}
+
+.note-section-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 90px;
+
+  padding: 70px 0 100px;
+}
+
+.note-section-grid h2 {
+  margin: 0;
+
+  color: #ddd;
+  font: 600 clamp(42px, 6vw, 82px)/.9 var(--mono);
+  letter-spacing: -.06em;
+}
+
+.note-section-grid h2 em {
+  color: var(--lime);
+  font-style: normal;
+}
+
+.note-copy {
+  max-width: 600px;
+}
+
+.note-copy p {
+  margin: 0;
+
+  color: #aaa;
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+
+/* ------------------------------------------------------------
+   ARCHITECTURE
+   ------------------------------------------------------------ */
+
+.note-architecture {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  border-left: 1px solid var(--line);
+  border-top: 1px solid var(--line);
+
+  margin-bottom: 100px;
+}
+
+.note-architecture-item {
+  min-height: 170px;
+  padding: 30px;
+
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.note-architecture-number {
+  display: block;
+  margin-bottom: 35px;
+
+  color: var(--lime);
+  font: 600 10px var(--mono);
+}
+
+.note-architecture-item h3 {
+  margin: 0 0 12px;
+
+  color: #ddd;
+  font: 600 15px var(--mono);
+}
+
+.note-architecture-item p {
+  max-width: 430px;
+  margin: 0;
+
+  color: #777;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+
+/* ------------------------------------------------------------
+   DECISIONS
+   ------------------------------------------------------------ */
+
+.note-decisions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  border-left: 1px solid var(--line);
+  border-top: 1px solid var(--line);
+
+  margin-bottom: 100px;
+}
+
+.note-decision {
+  min-height: 220px;
+  padding: 32px;
+
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.note-decision-number {
+  display: block;
+  margin-bottom: 40px;
+
+  color: var(--lime);
+  font: 600 10px var(--mono);
+}
+
+.note-decision h3 {
+  margin: 0 0 14px;
+
+  color: #ddd;
+  font: 600 15px/1.25 var(--mono);
+}
+
+.note-decision p {
+  max-width: 470px;
+  margin: 0;
+
+  color: #777;
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+
+/* ------------------------------------------------------------
+   CONTENT LISTS
+   ------------------------------------------------------------ */
+
+.note-content-list {
+  max-width: 900px;
+  padding: 55px 0 100px;
+}
+
+.note-content-list ol {
+  margin: 0;
+  padding: 0;
+
+  list-style: none;
+
+  counter-reset: note-counter;
+}
+
+.note-content-list li {
+  position: relative;
+
+  padding: 25px 0 25px 55px;
+
+  border-bottom: 1px solid var(--line);
+
+  color: #999;
+  font-size: 15px;
+  line-height: 1.8;
+
+  counter-increment: note-counter;
+}
+
+.note-content-list li::before {
+  content: counter(note-counter, decimal-leading-zero);
+
+  position: absolute;
+  left: 0;
+  top: 27px;
+
+  color: var(--lime);
+  font: 600 10px var(--mono);
+}
+
+.note-broke li {
+  color: #777;
+}
+
+
+/* ------------------------------------------------------------
+   NEXT
+   ------------------------------------------------------------ */
+
+.note-next-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  border-left: 1px solid var(--line);
+  border-top: 1px solid var(--line);
+
+  margin-bottom: 100px;
+}
+
+.note-next-item {
+  min-height: 150px;
+  padding: 30px;
+
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+
+  display: flex;
+  align-items: center;
+}
+
+.note-next-item span {
+  color: #999;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+
+/* ------------------------------------------------------------
+   NOTE RESPONSIVE
+   ------------------------------------------------------------ */
+
+@media (max-width: 900px) {
+
+  .note-hero-grid,
+  .note-section-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .note-hero-grid {
+    padding-top: 60px;
+  }
+
+  .note-architecture,
+  .note-decisions,
+  .note-next-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .note-hero {
+    min-height: auto;
+    padding-top: 100px;
+  }
+
+  .note-hero-grid {
+    padding: 50px 0 70px;
+  }
+
+  .note-hero-title h1 {
+    font-size: clamp(58px, 18vw, 95px);
+  }
+
+  .note-hero-title p {
+    font-size: 14px;
+  }
+
+  .note-section-grid {
+    padding: 50px 0 75px;
+  }
+
+  .note-section-grid h2 {
+    font-size: 48px;
+  }
+
+  .note-architecture-item,
+  .note-decision {
+    min-height: 180px;
+    padding: 25px 20px;
+  }
+
+  .note-content-list {
+    padding: 35px 0 75px;
+  }
+
+  .note-content-list li {
+    padding-left: 45px;
+    font-size: 13px;
+  }
+
+  .note-navigation .section-inner {
+    flex-direction: column;
+  }
+
+  .note-navigation .button {
+    width: 100%;
+    justify-content: center;
+  }
+
+}
