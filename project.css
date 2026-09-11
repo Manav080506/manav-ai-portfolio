@@ -360,3 +360,99 @@
   }
 
 }
+
+/* =========================================================
+   CASE STUDY — ENGINEERING DECISIONS + NEXT
+   ========================================================= */
+
+.decision-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  border-top:1px solid var(--line);
+  border-left:1px solid var(--line);
+}
+
+.decision-item{
+  min-height:220px;
+  padding:32px;
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  display:grid;
+  grid-template-columns:48px 1fr;
+  gap:20px;
+}
+
+.decision-item > span{
+  color:var(--lime);
+  font:600 10px var(--mono);
+}
+
+.decision-item h3{
+  margin:0 0 14px;
+  font:600 15px/1.25 var(--mono);
+  letter-spacing:.02em;
+  color:#ddd;
+}
+
+.decision-item p{
+  margin:0;
+  max-width:470px;
+  color:#777;
+  font-size:13px;
+  line-height:1.75;
+}
+
+.next-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  border-top:1px solid var(--line);
+  border-left:1px solid var(--line);
+}
+
+.next-item{
+  min-height:180px;
+  padding:30px;
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:35px;
+}
+
+.next-item > span{
+  color:var(--lime);
+  font:600 10px var(--mono);
+}
+
+.next-item h3{
+  margin:0;
+  font:600 16px/1.3 var(--mono);
+  color:#ddd;
+}
+
+.next-item p{
+  margin:10px 0 0;
+  color:#777;
+  font-size:13px;
+  line-height:1.7;
+}
+
+@media(max-width:800px){
+
+  .decision-grid,
+  .next-grid{
+    grid-template-columns:1fr;
+  }
+
+  .decision-item{
+    min-height:190px;
+    padding:25px 20px;
+  }
+
+  .next-item{
+    min-height:160px;
+    padding:25px 20px;
+  }
+
+}
