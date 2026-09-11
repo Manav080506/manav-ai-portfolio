@@ -1,13 +1,58 @@
 const params = new URLSearchParams(window.location.search);
 const requested = params.get("project");
 
-const project =
-  PROJECTS.find(p => p.slug === requested) ||
-  PROJECTS[0];
+/*
+ * PROJECT REGISTRY
+ * ------------------------------------------------------------
+ * PROJECTS remains the source of truth.
+ * The registry provides a stable interface for lookup and
+ * navigation so the case-study renderer does not depend on
+ * array operations scattered throughout the page.
+ */
+const PROJECT_REGISTRY = {
+  all() {
+    return PROJECTS;
+  },
 
-const currentIndex = PROJECTS.findIndex(
-  p => p.slug === project.slug
-);
+  count() {
+    return PROJECTS.length;
+  },
+
+  bySlug(slug) {
+    return PROJECTS.find(project => project.slug === slug) || null;
+  },
+
+  indexOf(project) {
+    return PROJECTS.findIndex(item => item.slug === project.slug);
+  },
+
+  current(slug) {
+    return this.bySlug(slug) || PROJECTS[0];
+  },
+
+  next(project) {
+    const index = this.indexOf(project);
+
+    if (index === -1 || !PROJECTS.length) {
+      return PROJECTS[0] || null;
+    }
+
+    return PROJECTS[(index + 1) % PROJECTS.length];
+  },
+
+  previous(project) {
+    const index = this.indexOf(project);
+
+    if (index === -1 || !PROJECTS.length) {
+      return PROJECTS[0] || null;
+    }
+
+    return PROJECTS[(index - 1 + PROJECTS.length) % PROJECTS.length];
+  }
+};
+
+const project = PROJECT_REGISTRY.current(requested);
+const currentIndex = PROJECT_REGISTRY.indexOf(project);
 
 /*
  * CASE STUDIES
@@ -862,10 +907,7 @@ if (study.repo) {
  * Next project navigation
  */
 
-const next =
-  PROJECTS[
-    (currentIndex + 1) % PROJECTS.length
-  ];
+const next = PROJECT_REGISTRY.next(project);
 
 document.getElementById("nextNumber").textContent =
   String(next.number).padStart(2, "0");
