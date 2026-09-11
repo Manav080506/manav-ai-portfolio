@@ -8,6 +8,21 @@
 const CASE_STUDIES = {
 
   "nexus-ai-butler": {
+    implementation: {
+      boundary:
+        "Multimodal interaction enters through an input layer before reaching the orchestration and intelligence components.",
+
+      flow:
+        "Input → Orchestrator → AI Engine → Memory / Tools → Output.",
+
+      engineering:
+        "Keep orchestration, intelligence, memory, multimodal I/O and tools as separate system responsibilities so each layer can evolve independently.",
+
+      validation:
+        "Continue testing the boundaries between orchestration, memory, intelligence and tools as the system grows."
+    },
+
+
     label: "MULTIMODAL AI · PERSONAL SYSTEM",
     title: "NEXUS",
     titleAccent: "AI BUTLER",
@@ -94,6 +109,21 @@ const CASE_STUDIES = {
 
 
   "career-os": {
+    implementation: {
+      boundary:
+        "Resume files are treated as an untrusted input boundary before they can enter downstream career intelligence workflows.",
+
+      flow:
+        "Upload → Quarantine → Bounded Write → Content Detection → Structural Validation → Downstream Processing.",
+
+      engineering:
+        "Establish the secure upload foundation before adding extraction, persistence and downstream intelligence so file handling remains separated from later processing.",
+
+      validation:
+        "Content detection and structural validation provide the current security gate before downstream resume processing."
+    },
+
+
     label: "AGENTIC AI · CAREER INTELLIGENCE",
     title: "CAREER",
     titleAccent: "OS",
@@ -260,6 +290,21 @@ const CASE_STUDIES = {
   },
 
   "glitch-over": {
+    implementation: {
+      boundary:
+        "Creator records enter through platform-specific discovery sources before being converted into a common downstream representation.",
+
+      flow:
+        "Discover → Normalize → Intake → Enrich → Score → Export → Outreach.",
+
+      engineering:
+        "Separate discovery from downstream processing and use a normalized creator representation so platform-specific logic does not propagate through every stage.",
+
+      validation:
+        "Retry, recovery and duplicate-handling patterns help prevent individual external failures or repeated records from disrupting the broader pipeline."
+    },
+
+
     story: {
       problem:
         "Creator discovery becomes difficult to scale when information is scattered across streaming platforms and each platform exposes data differently.",
@@ -384,6 +429,21 @@ const CASE_STUDIES = {
 
 
   "astro-trading-engine": {
+    implementation: {
+      boundary:
+        "Market data and planetary-position data remain separate input sources before entering the signal-processing layer.",
+
+      flow:
+        "Market Data + Planetary Data → Signal Engine → ML Layer → Sentiment → Output.",
+
+      engineering:
+        "Keep experimental signal generation separate from model experimentation and final sentiment output so individual signal behavior can be examined.",
+
+      validation:
+        "Historical comparison is part of the next-stage validation work for understanding whether experimental signals provide useful information."
+    },
+
+
     story: {
       problem:
         "Experimental market analysis becomes difficult to evaluate when unconventional signals are mixed directly into the final output without a clear processing pipeline.",
@@ -505,6 +565,21 @@ const CASE_STUDIES = {
 
 
   "credit-card-intelligence": {
+    implementation: {
+      boundary:
+        "User profile, spending behavior and structured card data enter the recommendation system as separate inputs.",
+
+      flow:
+        "Profile + Spending + Card Data → Scoring Engine → Ranking → Recommendation.",
+
+      engineering:
+        "Keep recommendation logic behind clear API boundaries and use explicit scoring so candidate cards can be evaluated systematically.",
+
+      validation:
+        "Recommendation refinement focuses on improving scoring weights and making the factors contributing to rankings easier to understand."
+    },
+
+
     story: {
       problem:
         "Credit-card selection can become a generic comparison exercise when recommendations ignore the user's financial profile and actual spending behavior.",
@@ -626,6 +701,21 @@ const CASE_STUDIES = {
 
 
   "tradelead-ai": {
+    implementation: {
+      boundary:
+        "Potential importer sources enter through web discovery before being passed into worker-oriented extraction and processing stages.",
+
+      flow:
+        "Discover → Extract → Filter → Dedup → Normalize → Export.",
+
+      engineering:
+        "Separate discovery and extraction into worker-oriented stages and keep filtering, deduplication and normalization explicit in the pipeline.",
+
+      validation:
+        "Filtering and deduplication provide processing gates that reduce noisy and repeated records before structured output."
+    },
+
+
     story: {
       problem:
         "Trade and importer lead generation becomes noisy when web discovery, extraction and filtering are handled as one undifferentiated search process.",
@@ -747,6 +837,21 @@ const CASE_STUDIES = {
 
 
   "student-support-ai": {
+    implementation: {
+      boundary:
+        "Student interactions enter through the conversational layer while application logic, persistence and administrative workflows remain in the backend.",
+
+      flow:
+        "Student → Dialogflow → Backend → MongoDB / Admin / Risk.",
+
+      engineering:
+        "Keep conversational intelligence separate from API, persistence and administrative responsibilities so each layer can evolve independently.",
+
+      validation:
+        "Chat logging, administrative workflows and student-risk signals provide structured system outputs that can be used to improve the broader support workflow."
+    },
+
+
     story: {
       problem:
         "Student support often depends on repetitive questions and fragmented interactions, making it difficult to combine conversational assistance with structured administrative and risk workflows.",

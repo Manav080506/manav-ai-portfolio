@@ -764,6 +764,47 @@ architectureContent
   .forEach(node => architectureObserver.observe(node));
 
 
+
+/*
+ * Project implementation
+ */
+
+const implementationGrid =
+  document.getElementById("implementationGrid");
+
+if (implementationGrid && study.implementation) {
+
+  const implementationItems = [
+    ["BOUNDARY", study.implementation.boundary],
+    ["FLOW", study.implementation.flow],
+    ["ENGINEERING", study.implementation.engineering],
+    ["VALIDATION", study.implementation.validation]
+  ];
+
+  implementationGrid.innerHTML =
+    implementationItems.map((item, i) => `
+      <article class="implementation-item">
+
+        <span class="implementation-index">
+          ${String(i + 1).padStart(2, "0")}
+        </span>
+
+        <div class="implementation-content">
+
+          <h3>
+            ${item[0]}
+          </h3>
+
+          <p>
+            ${item[1]}
+          </p>
+
+        </div>
+
+      </article>
+    `).join("");
+}
+
 /*
  * Project story
  */
