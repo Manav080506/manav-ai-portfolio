@@ -109,6 +109,14 @@ document.title =
 document.getElementById("projectNumber").textContent =
   String(project.number).padStart(2, "0");
 
+const projectTotal =
+  document.querySelector(".case-meta-total");
+
+if (projectTotal) {
+  projectTotal.textContent =
+    ` / ${String(PROJECT_REGISTRY.count()).padStart(2, "0")}`;
+}
+
 document.getElementById("projectStatus").textContent =
   "CURRENT";
 

@@ -20,6 +20,10 @@
   padding:6px 9px;
 }
 
+.case-meta-total{
+  color:#4f4f49;
+}
+
 .case-type{
   font:600 10px var(--mono);
   letter-spacing:.12em;
@@ -170,6 +174,39 @@
   display:flex;
   align-items:center;
   gap:25px;
+  position:relative;
+  min-width:280px;
+  padding:18px 0;
+  transition:transform .3s ease;
+}
+
+.next-inner > a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:4px;
+  height:1px;
+  background:var(--lime);
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform .3s ease;
+}
+
+.next-inner > a:hover{
+  transform:translateX(8px);
+}
+
+.next-inner > a:hover::after{
+  transform:scaleX(1);
+}
+
+.next-project-number{
+  transition:color .25s ease;
+}
+
+.next-inner > a:hover .next-project-number{
+  color:var(--lime);
 }
 
 .next-inner strong{
