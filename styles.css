@@ -876,3 +876,298 @@
     transition: none;
   }
 }
+
+
+
+/* MOBILE PROJECT CARD REPAIR */
+
+@media (max-width: 520px){
+
+  .project-card{
+    min-height: auto !important;
+    height: auto !important;
+    padding: 30px 28px 32px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    position: relative !important;
+  }
+
+  .project-card h3{
+    position: relative !important;
+    z-index: 2;
+    margin-bottom: 22px !important;
+  }
+
+  .project-card p{
+    position: relative !important;
+    z-index: 2;
+    margin-bottom: 28px !important;
+  }
+
+  /*
+   * Architecture / system-flow blocks must stay
+   * inside the normal vertical content flow.
+   */
+  .project-architecture,
+  .architecture-flow,
+  .project-flow,
+  .architecture{
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 4px 0 26px !important;
+  }
+
+  /*
+   * Tags form their own wrapping row instead of
+   * competing with the architecture visualization.
+   */
+  .project-tags{
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 0 24px !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    z-index: 3;
+  }
+
+  /*
+   * Case-study action gets its own row.
+   */
+  .project-card .case-study,
+  .project-card .project-link,
+  .project-card .inline-link{
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    align-self: flex-start !important;
+    margin: 0 !important;
+    z-index: 4;
+  }
+
+  /*
+   * Prevent absolute visual layers from covering
+   * readable content on small screens.
+   */
+  .project-card::before,
+  .project-card::after{
+    pointer-events: none;
+  }
+
+}
+
+/* EXTRA NARROW PHONES */
+
+@media (max-width: 390px){
+
+  .project-card{
+    padding-left: 22px !important;
+    padding-right: 22px !important;
+  }
+
+  .project-card h3{
+    font-size: 44px !important;
+    line-height: .9 !important;
+  }
+
+}
+
+
+
+/* =========================================================
+   MOBILE PROJECT CARDS — FINAL FLOW LAYOUT
+   ========================================================= */
+
+@media (max-width: 520px){
+
+  .project-card{
+    position:relative !important;
+    display:flex !important;
+    flex-direction:column !important;
+    min-height:0 !important;
+    height:auto !important;
+    padding:34px 28px 30px !important;
+  }
+
+  /* Keep all readable text in normal document flow */
+  .project-card .project-top,
+  .project-card .project-type,
+  .project-card h3,
+  .project-card .project-desc,
+  .project-card .project-content{
+    position:relative !important;
+    left:auto !important;
+    right:auto !important;
+    top:auto !important;
+    bottom:auto !important;
+  }
+
+  .project-card h3{
+    margin-bottom:22px !important;
+  }
+
+  .project-card .project-desc{
+    margin-bottom:30px !important;
+  }
+
+  /*
+   * Architecture visual becomes a normal vertical section.
+   * Nothing is pinned to the bottom of the card.
+   */
+  .project-card .architecture{
+    position:relative !important;
+    left:auto !important;
+    right:auto !important;
+    top:auto !important;
+    bottom:auto !important;
+
+    width:100% !important;
+    max-width:100% !important;
+
+    margin:0 0 24px !important;
+
+    display:flex !important;
+    flex-wrap:wrap !important;
+    align-items:center !important;
+    gap:8px 10px !important;
+  }
+
+  .project-card .architecture > div{
+    flex:0 0 auto !important;
+  }
+
+  .project-card .architecture > i{
+    flex:0 0 auto !important;
+  }
+
+  /*
+   * Agent flow gets its own wrapping row.
+   */
+  .project-card .agent-row{
+    position:relative !important;
+    left:auto !important;
+    right:auto !important;
+    top:auto !important;
+    bottom:auto !important;
+
+    width:100% !important;
+    max-width:100% !important;
+
+    margin:0 0 24px !important;
+
+    display:flex !important;
+    flex-wrap:wrap !important;
+    gap:8px !important;
+  }
+
+  /*
+   * Pipeline gets its own normal-flow section.
+   */
+  .project-card .pipeline{
+    position:relative !important;
+    left:auto !important;
+    right:auto !important;
+    top:auto !important;
+    bottom:auto !important;
+
+    width:100% !important;
+    max-width:100% !important;
+
+    margin:0 0 24px !important;
+
+    display:flex !important;
+    flex-wrap:wrap !important;
+    gap:8px !important;
+  }
+
+  /*
+   * Tags were the main collision point.
+   * They must NOT be absolutely positioned anymore.
+   */
+  .project-card .tags{
+    position:relative !important;
+    left:auto !important;
+    right:auto !important;
+    top:auto !important;
+    bottom:auto !important;
+
+    width:100% !important;
+    max-width:100% !important;
+
+    margin:0 0 24px !important;
+
+    display:flex !important;
+    flex-wrap:wrap !important;
+    align-items:center !important;
+    gap:8px !important;
+
+    z-index:5 !important;
+  }
+
+  /*
+   * Case Study becomes the final row of every card.
+   */
+  .project-card .case-study-link{
+    position:relative !important;
+    left:auto !important;
+    right:auto !important;
+    top:auto !important;
+    bottom:auto !important;
+
+    display:inline-flex !important;
+    align-items:center !important;
+    align-self:flex-start !important;
+
+    width:auto !important;
+
+    margin:0 !important;
+    padding:0 !important;
+
+    z-index:10 !important;
+  }
+
+  /*
+   * Disable the old bottom-zone spacing on mobile.
+   */
+  .project-card{
+    padding-bottom:30px !important;
+  }
+
+  .project-card:not(:has(.inline-link)){
+    padding-bottom:30px !important;
+  }
+
+}
+
+
+/* EXTRA NARROW PHONES */
+
+@media (max-width:390px){
+
+  .project-card{
+    padding-left:22px !important;
+    padding-right:22px !important;
+  }
+
+  .project-card h3{
+    font-size:44px !important;
+    line-height:.9 !important;
+  }
+
+  .project-card .architecture,
+  .project-card .agent-row,
+  .project-card .pipeline{
+    gap:7px !important;
+  }
+
+}

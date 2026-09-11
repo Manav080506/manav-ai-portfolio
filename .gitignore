@@ -10,3 +10,5 @@ build/
 
 *.backup.html
 *.backup.css
+
+mobile-audit/
