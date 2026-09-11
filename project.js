@@ -765,6 +765,43 @@ architectureContent
 
 
 
+
+/*
+ * Project signature
+ */
+
+const signatureBlock =
+  document.getElementById("signatureBlock");
+
+if (signatureBlock && study.signature) {
+
+  signatureBlock.innerHTML = `
+    <div class="signature-header">
+
+      <span class="signature-label">
+        ${study.signature.label}
+      </span>
+
+      <span class="signature-marker">
+        ● SIGNATURE SYSTEM
+      </span>
+
+    </div>
+
+    <div class="signature-main">
+
+      <div class="signature-flow">
+        ${study.signature.title}
+      </div>
+
+      <p class="signature-detail">
+        ${study.signature.detail}
+      </p>
+
+    </div>
+  `;
+}
+
 /*
  * Project implementation
  */

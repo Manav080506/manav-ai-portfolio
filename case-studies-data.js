@@ -8,6 +8,13 @@
 const CASE_STUDIES = {
 
   "nexus-ai-butler": {
+    signature: {
+      label: "PERSONAL AI LOOP",
+      title: "UNDERSTAND → REMEMBER → REASON → ACT",
+      detail: "NEXUS connects multimodal interaction, persistent context, intelligence and tools into one continuous system loop."
+    },
+
+
     implementation: {
       boundary:
         "Multimodal interaction enters through an input layer before reaching the orchestration and intelligence components.",
@@ -109,6 +116,13 @@ const CASE_STUDIES = {
 
 
   "career-os": {
+    signature: {
+      label: "CAREER INTELLIGENCE LOOP",
+      title: "CONTEXT → ORCHESTRATE → SPECIALIZE → DELIVER",
+      detail: "Career OS keeps a persistent Career Profile at the center while NOVA coordinates specialized workflows."
+    },
+
+
     implementation: {
       boundary:
         "Resume files are treated as an untrusted input boundary before they can enter downstream career intelligence workflows.",
@@ -290,6 +304,13 @@ const CASE_STUDIES = {
   },
 
   "glitch-over": {
+    signature: {
+      label: "CREATOR DATA PIPELINE",
+      title: "DISCOVER → NORMALIZE → ENRICH → SCORE → EXPORT",
+      detail: "GlitchOver progressively transforms platform-specific creator discovery into structured outreach-ready records."
+    },
+
+
     implementation: {
       boundary:
         "Creator records enter through platform-specific discovery sources before being converted into a common downstream representation.",
@@ -429,6 +450,13 @@ const CASE_STUDIES = {
 
 
   "astro-trading-engine": {
+    signature: {
+      label: "EXPERIMENTAL SIGNAL LOOP",
+      title: "MARKET + PLANETARY DATA → SIGNAL → ML → SENTIMENT",
+      detail: "Astro Trading Engine keeps experimental inputs separable while moving them through signal processing and ML experimentation."
+    },
+
+
     implementation: {
       boundary:
         "Market data and planetary-position data remain separate input sources before entering the signal-processing layer.",
@@ -565,6 +593,13 @@ const CASE_STUDIES = {
 
 
   "credit-card-intelligence": {
+    signature: {
+      label: "PROFILED RECOMMENDATION LOOP",
+      title: "PROFILE + SPENDING + CARD DATA → SCORE → RANK",
+      detail: "Credit Card Intelligence turns profile and spending context into an explicit scoring and ranking workflow."
+    },
+
+
     implementation: {
       boundary:
         "User profile, spending behavior and structured card data enter the recommendation system as separate inputs.",
@@ -701,6 +736,13 @@ const CASE_STUDIES = {
 
 
   "tradelead-ai": {
+    signature: {
+      label: "LEAD PROCESSING PIPELINE",
+      title: "DISCOVER → EXTRACT → FILTER → DEDUP → NORMALIZE",
+      detail: "TradeLead AI progressively transforms noisy web discovery into structured, reusable lead records."
+    },
+
+
     implementation: {
       boundary:
         "Potential importer sources enter through web discovery before being passed into worker-oriented extraction and processing stages.",
@@ -837,6 +879,13 @@ const CASE_STUDIES = {
 
 
   "student-support-ai": {
+    signature: {
+      label: "STUDENT SUPPORT FLOW",
+      title: "STUDENT → DIALOGFLOW → BACKEND → DATA / ADMIN / RISK",
+      detail: "Student Support AI separates conversational interaction from application, persistence and administrative workflows."
+    },
+
+
     implementation: {
       boundary:
         "Student interactions enter through the conversational layer while application logic, persistence and administrative workflows remain in the backend.",

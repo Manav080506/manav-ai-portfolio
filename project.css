@@ -2959,3 +2959,129 @@
   }
 
 }
+
+/* =========================================================
+   CASE STUDY — SIGNATURE SYSTEM
+   ========================================================= */
+
+.signature-block{
+  border:1px solid var(--line);
+  background:#060606;
+  position:relative;
+  overflow:hidden;
+}
+
+.signature-block::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(200,255,61,.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      rgba(200,255,61,.025) 1px,
+      transparent 1px
+    );
+  background-size:48px 48px;
+  pointer-events:none;
+}
+
+.signature-header{
+  min-height:58px;
+  padding:0 24px;
+  border-bottom:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  position:relative;
+  z-index:1;
+}
+
+.signature-label,
+.signature-marker{
+  font:600 10px var(--mono);
+  letter-spacing:.08em;
+}
+
+.signature-label{
+  color:#ddd;
+}
+
+.signature-marker{
+  color:var(--lime);
+}
+
+.signature-main{
+  min-height:300px;
+  padding:55px 50px 50px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  position:relative;
+  z-index:1;
+}
+
+.signature-flow{
+  max-width:1050px;
+  color:#ddd;
+  font:600 clamp(24px,4vw,54px)/1.15 var(--mono);
+  letter-spacing:-.035em;
+  text-transform:uppercase;
+  word-break:normal;
+  transition:
+    color .3s ease,
+    text-shadow .3s ease;
+}
+
+.signature-block:hover .signature-flow{
+  color:var(--lime);
+  text-shadow:0 0 30px rgba(200,255,61,.12);
+}
+
+.signature-detail{
+  max-width:700px;
+  margin:32px 0 0;
+  color:#777;
+  font-size:13px;
+  line-height:1.8;
+}
+
+@media(max-width:800px){
+
+  .signature-header{
+    min-height:52px;
+    padding:0 18px;
+    align-items:flex-start;
+    justify-content:center;
+    flex-direction:column;
+    gap:7px;
+  }
+
+  .signature-main{
+    min-height:250px;
+    padding:35px 22px 30px;
+  }
+
+  .signature-flow{
+    font-size:24px;
+    line-height:1.35;
+  }
+
+  .signature-detail{
+    margin-top:24px;
+    font-size:12px;
+  }
+
+}
+
+@media(prefers-reduced-motion:reduce){
+
+  .signature-flow{
+    transition:none;
+  }
+
+}
