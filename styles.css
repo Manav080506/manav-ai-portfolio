@@ -540,3 +540,136 @@
     bottom:58px;
   }
 }
+
+
+/* ===== E1 — NAVIGATION INTELLIGENCE ===== */
+
+.nav nav a{
+  position:relative;
+  color:#777;
+  transition:
+    color .25s ease,
+    opacity .25s ease;
+}
+
+.nav nav a::after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-8px;
+  height:1px;
+  background:var(--lime);
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform .25s ease;
+}
+
+.nav nav a:hover{
+  color:var(--lime);
+}
+
+.nav nav a.active{
+  color:var(--text);
+}
+
+.nav nav a.active::after{
+  transform:scaleX(1);
+}
+
+@media(max-width:800px){
+  .nav nav a::after{
+    display:none;
+  }
+}
+
+
+/* ===== E2 — PROJECT INTERACTION ===== */
+
+.project-card{
+  --mx:50%;
+  --my:50%;
+  --card-x:0px;
+  --card-y:0px;
+  transform:translate3d(var(--card-x),var(--card-y),0);
+  will-change:transform;
+}
+
+.project-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(
+      280px circle at var(--mx) var(--my),
+      rgba(200,255,61,.075),
+      transparent 68%
+    );
+  opacity:0;
+  transition:opacity .3s ease;
+}
+
+.project-card.project-active::after{
+  opacity:1;
+}
+
+.project-card.project-active{
+  border-color:#41413a;
+}
+
+.project-card .project-top,
+.project-card .project-content,
+.project-card > .project-type,
+.project-card > h3,
+.project-card > .project-desc,
+.project-card > .architecture,
+.project-card > .agent-row,
+.project-card > .pipeline{
+  position:relative;
+  z-index:1;
+}
+
+.project-card .project-no{
+  transition:
+    color .25s ease,
+    text-shadow .25s ease;
+}
+
+.project-card.project-active .project-no{
+  color:var(--lime);
+  text-shadow:0 0 18px rgba(200,255,61,.22);
+}
+
+.project-card .status{
+  transition:
+    border-color .25s ease,
+    color .25s ease;
+}
+
+.project-card.project-active .status{
+  border-color:#3b4724;
+  color:#b9d96b;
+}
+
+@media(max-width:800px){
+  .project-card{
+    transform:none !important;
+    will-change:auto;
+  }
+
+  .project-card::after{
+    display:none;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .project-card{
+    transform:none !important;
+    transition:none;
+  }
+
+  .project-card::after{
+    transition:none;
+  }
+}
