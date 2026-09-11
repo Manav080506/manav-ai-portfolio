@@ -497,3 +497,46 @@
   }
 }
 
+
+/* =========================================================
+   CASE STUDY LINKS
+   ========================================================= */
+
+.project-card{
+  position:relative;
+}
+
+.project-card .case-study-link{
+  position:absolute;
+  right:30px;
+  bottom:62px;
+  z-index:20;
+
+  display:inline-flex;
+  align-items:center;
+
+  color:var(--lime);
+  text-decoration:none;
+
+  font:600 10px var(--mono);
+  letter-spacing:.04em;
+  line-height:1.4;
+
+  cursor:pointer;
+  pointer-events:auto;
+  transition:color .2s ease, transform .2s ease;
+}
+
+.project-card .case-study-link:hover{
+  color:#e7ff9a;
+  text-decoration:underline;
+  text-underline-offset:4px;
+  transform:translateX(3px);
+}
+
+@media(max-width:800px){
+  .project-card .case-study-link{
+    right:20px;
+    bottom:58px;
+  }
+}
