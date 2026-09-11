@@ -7,3 +7,6 @@ node_modules/
 .idea/
 dist/
 build/
+
+*.backup.html
+*.backup.css
