@@ -2459,3 +2459,224 @@
   }
 
 }
+
+
+/* ===== E3 — INTERACTIVE ARCHITECTURE SYSTEMS ===== */
+
+/*
+ * Shared interaction state.
+ *
+ * D4 controls the visual language.
+ * E3 adds system-state emphasis.
+ */
+
+.architecture-interactive-dim{
+  opacity:.34 !important;
+  filter:saturate(.55);
+  transition:
+    opacity .22s ease,
+    filter .22s ease;
+}
+
+.architecture-interactive-active{
+  opacity:1 !important;
+  filter:none;
+}
+
+/* SYSTEM */
+
+.architecture-node{
+  transition:
+    border-color .25s ease,
+    background .25s ease,
+    box-shadow .25s ease,
+    opacity .22s ease,
+    filter .22s ease;
+}
+
+.architecture-node.architecture-interactive-active{
+  border-color:var(--lime);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(200,255,61,.055),
+      rgba(8,8,8,.96)
+    );
+  box-shadow:
+    0 0 0 1px rgba(200,255,61,.08),
+    0 0 35px rgba(200,255,61,.055);
+}
+
+.architecture-connector.architecture-interactive-active{
+  opacity:1;
+}
+
+.architecture-connector.architecture-interactive-active span{
+  opacity:1;
+}
+
+/* PIPELINE */
+
+.pipeline-node{
+  transition:
+    border-color .25s ease,
+    background .25s ease,
+    box-shadow .25s ease,
+    opacity .22s ease,
+    filter .22s ease;
+}
+
+.pipeline-node.architecture-interactive-active{
+  border-color:var(--lime);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(200,255,61,.055),
+      rgba(8,8,8,.96)
+    );
+  box-shadow:
+    0 0 0 1px rgba(200,255,61,.08),
+    0 0 35px rgba(200,255,61,.055);
+}
+
+.pipeline-connector.architecture-interactive-active{
+  opacity:1;
+}
+
+/* AGENT */
+
+.agent-satellite,
+.agent-node-center{
+  transition:
+    border-color .25s ease,
+    background .25s ease,
+    box-shadow .25s ease,
+    opacity .22s ease,
+    filter .22s ease;
+}
+
+.agent-satellite.architecture-interactive-active{
+  border-color:var(--lime);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(200,255,61,.055),
+      rgba(8,8,8,.96)
+    );
+  box-shadow:
+    0 0 0 1px rgba(200,255,61,.08),
+    0 0 35px rgba(200,255,61,.055);
+}
+
+.agent-node-center.architecture-interactive-active{
+  border-color:var(--lime);
+  box-shadow:
+    0 0 0 1px rgba(200,255,61,.08),
+    0 0 45px rgba(200,255,61,.07);
+}
+
+/* SIGNAL */
+
+.signal-input-card,
+.signal-processing-node{
+  transition:
+    border-color .25s ease,
+    background .25s ease,
+    box-shadow .25s ease,
+    opacity .22s ease,
+    filter .22s ease;
+}
+
+.signal-input-card.architecture-interactive-active,
+.signal-processing-node.architecture-interactive-active{
+  border-color:var(--lime);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(200,255,61,.055),
+      rgba(8,8,8,.96)
+    );
+  box-shadow:
+    0 0 0 1px rgba(200,255,61,.08),
+    0 0 35px rgba(200,255,61,.055);
+}
+
+/* SCORING */
+
+.scoring-input-card,
+.scoring-core,
+.scoring-result{
+  transition:
+    border-color .25s ease,
+    background .25s ease,
+    box-shadow .25s ease,
+    opacity .22s ease,
+    filter .22s ease;
+}
+
+.scoring-input-card.architecture-interactive-active,
+.scoring-core.architecture-interactive-active,
+.scoring-result.architecture-interactive-active{
+  border-color:var(--lime);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(200,255,61,.055),
+      rgba(8,8,8,.96)
+    );
+  box-shadow:
+    0 0 0 1px rgba(200,255,61,.08),
+    0 0 35px rgba(200,255,61,.055);
+}
+
+/* CONVERSATIONAL */
+
+.conversation-user,
+.conversation-ai,
+.conversation-backend,
+.conversation-branch-card{
+  transition:
+    border-color .25s ease,
+    background .25s ease,
+    box-shadow .25s ease,
+    opacity .22s ease,
+    filter .22s ease;
+}
+
+.conversation-user.architecture-interactive-active,
+.conversation-ai.architecture-interactive-active,
+.conversation-backend.architecture-interactive-active,
+.conversation-branch-card.architecture-interactive-active{
+  border-color:var(--lime);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(200,255,61,.055),
+      rgba(8,8,8,.96)
+    );
+  box-shadow:
+    0 0 0 1px rgba(200,255,61,.08),
+    0 0 35px rgba(200,255,61,.055);
+}
+
+/* Reduced motion */
+
+@media(prefers-reduced-motion:reduce){
+  .architecture-interactive-dim,
+  .architecture-interactive-active,
+  .architecture-node,
+  .pipeline-node,
+  .agent-satellite,
+  .agent-node-center,
+  .signal-input-card,
+  .signal-processing-node,
+  .scoring-input-card,
+  .scoring-core,
+  .scoring-result,
+  .conversation-user,
+  .conversation-ai,
+  .conversation-backend,
+  .conversation-branch-card{
+    transition:none !important;
+  }
+}

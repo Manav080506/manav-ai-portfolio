@@ -1677,3 +1677,216 @@ if (glow) {
     glow.style.top = `${e.clientY}px`;
   });
 }
+
+
+/* ===== E3 — INTERACTIVE ARCHITECTURE SYSTEMS ===== */
+
+/*
+ * Architecture interaction is intentionally layered on top
+ * of the D4 visual renderers.
+ *
+ * The renderer owns structure.
+ * E3 owns interaction state.
+ */
+
+const architectureRoot =
+  document.getElementById('architectureContent');
+
+const interactiveArchitectureSelectors = [
+  '.architecture-node',
+  '.pipeline-node',
+  '.agent-satellite',
+  '.agent-node-center',
+  '.signal-input-card',
+  '.signal-processing-node',
+  '.scoring-input-card',
+  '.scoring-core',
+  '.scoring-result',
+  '.conversation-user',
+  '.conversation-ai',
+  '.conversation-backend',
+  '.conversation-branch-card'
+];
+
+const interactiveArchitectureNodes =
+  architectureRoot
+    ? architectureRoot.querySelectorAll(
+        interactiveArchitectureSelectors.join(',')
+      )
+    : [];
+
+const clearArchitectureInteraction = () => {
+  if (!architectureRoot) return;
+
+  architectureRoot
+    .querySelectorAll(
+      '.architecture-interactive-active, .architecture-interactive-dim'
+    )
+    .forEach(element => {
+      element.classList.remove(
+        'architecture-interactive-active',
+        'architecture-interactive-dim'
+      );
+    });
+};
+
+const getInteractionFamily = node => {
+  if (node.closest('.architecture-flow')) return 'architecture';
+  if (node.closest('.pipeline-flow')) return 'pipeline';
+  if (node.closest('.agent-graph')) return 'agent';
+  if (node.closest('.signal-system')) return 'signal';
+  if (node.closest('.scoring-system')) return 'scoring';
+  if (node.closest('.conversation-system')) return 'conversation';
+
+  return null;
+};
+
+const activateArchitectureNode = node => {
+  if (!architectureRoot || !node) return;
+
+  clearArchitectureInteraction();
+
+  const family = getInteractionFamily(node);
+
+  if (!family) return;
+
+  node.classList.add(
+    'architecture-interactive-active'
+  );
+
+  /*
+   * Dim only nodes belonging to the same visual system.
+   * This keeps unrelated project components untouched.
+   */
+  const familyRoot = node.closest(
+    [
+      '.architecture-flow',
+      '.pipeline-flow',
+      '.agent-graph',
+      '.signal-system',
+      '.scoring-system',
+      '.conversation-system'
+    ].join(',')
+  );
+
+  if (!familyRoot) return;
+
+  familyRoot
+    .querySelectorAll(
+      interactiveArchitectureSelectors.join(',')
+    )
+    .forEach(element => {
+      if (element !== node) {
+        element.classList.add(
+          'architecture-interactive-dim'
+        );
+      }
+    });
+
+  /*
+   * Bring the direct structural relationship back
+   * to full emphasis where the DOM makes it explicit.
+   */
+
+  node.parentElement
+    ?.querySelectorAll(
+      '.architecture-connector, .pipeline-connector, .conversation-connector, .conversation-branch-line'
+    )
+    .forEach(element => {
+      element.classList.add(
+        'architecture-interactive-active'
+      );
+    });
+};
+
+if (architectureRoot) {
+  architectureRoot.addEventListener(
+    'pointerover',
+    event => {
+      const node =
+        event.target.closest(
+          interactiveArchitectureSelectors.join(',')
+        );
+
+      if (!node || !architectureRoot.contains(node)) {
+        return;
+      }
+
+      /*
+       * Ignore pointer movement between children
+       * of the same interactive node.
+       */
+      const fromNode =
+        event.relatedTarget?.closest?.(
+          interactiveArchitectureSelectors.join(',')
+        );
+
+      if (fromNode === node) return;
+
+      activateArchitectureNode(node);
+    }
+  );
+
+  architectureRoot.addEventListener(
+    'pointerout',
+    event => {
+      const node =
+        event.target.closest(
+          interactiveArchitectureSelectors.join(',')
+        );
+
+      if (!node || !architectureRoot.contains(node)) {
+        return;
+      }
+
+      const toNode =
+        event.relatedTarget?.closest?.(
+          interactiveArchitectureSelectors.join(',')
+        );
+
+      if (toNode === node) return;
+
+      if (
+        !toNode ||
+        !node.contains(toNode)
+      ) {
+        clearArchitectureInteraction();
+      }
+    }
+  );
+
+  /*
+   * Keyboard support.
+   *
+   * Architecture components remain primarily visual,
+   * but interactive cards can still receive focus if
+   * they already expose focusable behavior.
+   */
+  architectureRoot.addEventListener(
+    'focusin',
+    event => {
+      const node =
+        event.target.closest(
+          interactiveArchitectureSelectors.join(',')
+        );
+
+      if (node) {
+        activateArchitectureNode(node);
+      }
+    }
+  );
+
+  architectureRoot.addEventListener(
+    'focusout',
+    event => {
+      const next =
+        event.relatedTarget?.closest?.(
+          interactiveArchitectureSelectors.join(',')
+        );
+
+      if (!next) {
+        clearArchitectureInteraction();
+      }
+    }
+  );
+}
