@@ -673,3 +673,74 @@
     transition:none;
   }
 }
+
+/* ===== E4 — INTERACTIVE TERMINAL ===== */
+
+.terminal-body {
+  cursor: text;
+}
+
+.terminal-input-row {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 0;
+}
+
+.terminal-input-row b {
+  color: var(--lime);
+  font-weight: 600;
+}
+
+.terminal-input {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  line-height: inherit;
+  caret-color: var(--lime);
+}
+
+.terminal-input::selection {
+  background: rgba(200,255,61,.2);
+}
+
+.terminal-error {
+  color: #ff7474 !important;
+}
+
+.terminal-input-row::after {
+  content: "";
+  width: 7px;
+  height: 15px;
+  margin-left: 2px;
+  background: var(--lime);
+  opacity: .8;
+  animation: terminal-caret 1s steps(1,end) infinite;
+}
+
+@keyframes terminal-caret {
+  0%, 48% { opacity: .8; }
+  49%, 100% { opacity: 0; }
+}
+
+@media(max-width:800px) {
+  .terminal-input {
+    font-size: 12px;
+  }
+
+  .terminal-input-row::after {
+    height: 14px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .terminal-input-row::after {
+    animation: none;
+  }
+}

@@ -145,3 +145,260 @@ if (supportsFinePointer) {
 
   });
 }
+
+/* ===== E4 — INTERACTIVE TERMINAL ===== */
+
+const terminalBody = document.getElementById('terminalBody');
+
+if (terminalBody) {
+  const terminalCommands = {
+    help: () => [
+      'AVAILABLE COMMANDS',
+      '',
+      'whoami      identity',
+      'projects    current systems',
+      'stack       technology stack',
+      'certs       certifications',
+      'contact     connect with Manav',
+      'clear       clear terminal',
+      'help        show commands'
+    ],
+
+    whoami: () => [
+      'MANAV RUNTHALA',
+      'AI systems builder · CSE AIML · India',
+      'AI engineering · systems building · vibe coding'
+    ],
+
+    projects: () => [
+      'CURRENT SYSTEMS',
+      '',
+      '01  NEXUS AI BUTLER',
+      '02  CAREER OS',
+      '03  GLITCHOVER',
+      '04  ASTRO TRADING ENGINE',
+      '05  CREDIT CARD INTELLIGENCE',
+      '06  TRADELEAD AI',
+      '07  STUDENT SUPPORT AI'
+    ],
+
+    stack: () => [
+      'STACK',
+      '',
+      'AI / ML        Python · PyTorch · LLMs · RAG',
+      'BACKEND        FastAPI · Node.js · MongoDB · PostgreSQL',
+      'FRONTEND       Next.js · React · JavaScript',
+      'INFRA          Docker · Git · GitHub',
+      'WORKFLOW       AI Coding · Vibe Coding · Rapid Prototyping'
+    ],
+
+    certs: () => [
+      'CERTIFICATIONS',
+      '',
+      '01  Anthropic — Claude with the Anthropic API',
+      '02  AWS — Cloud Practitioner Essentials',
+      '03  AWS — Generative AI & AWS Foundations',
+      '04  AWS — Identity & Access Management',
+      '05  IBM — Data Science & Analytics',
+      '06  IBM — Machine Learning',
+      '07  IBM — AI Development',
+      '08  Microsoft — AI & Generative AI',
+      '09  Microsoft — Microsoft Fabric',
+      '10  Microsoft — Power BI'
+    ],
+
+    contact: () => [
+      'CONTACT',
+      '',
+      'GITHUB       → github.com/Manav080506',
+      'LINKEDIN     → linkedin.com/in/manav-runthala/'
+    ],
+
+    philosophy: () => [
+      'Build → Break → Learn → Ship → Repeat.'
+    ],
+
+    workflow: () => [
+      'Think → Prompt → Build → Test → Iterate → Ship.',
+      'AI-assisted engineering · rapid prototyping · vibe coding.'
+    ]
+  };
+
+  const commandHistory = [];
+  let historyIndex = -1;
+
+  const escapeHtml = value =>
+    value
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+
+  const addTerminalLine = (content = '', className = '') => {
+    const line = document.createElement('p');
+
+    if (className) {
+      line.className = className;
+    }
+
+    line.innerHTML = escapeHtml(content);
+    terminalBody.appendChild(line);
+
+    return line;
+  };
+
+  const addCommand = command => {
+    const line = document.createElement('p');
+    line.innerHTML = `<b>$</b> ${escapeHtml(command)}`;
+    terminalBody.appendChild(line);
+  };
+
+  const clearTerminal = () => {
+    terminalBody.innerHTML = '';
+  };
+
+  const runCommand = rawCommand => {
+    const command = rawCommand.trim().toLowerCase();
+
+    if (!command) {
+      return;
+    }
+
+    addCommand(rawCommand);
+
+    if (command === 'clear') {
+      clearTerminal();
+      return;
+    }
+
+    if (terminalCommands[command]) {
+      terminalCommands[command]().forEach(line => {
+        addTerminalLine(
+          line,
+          line === '' ? '' : 'muted'
+        );
+      });
+      return;
+    }
+
+    addTerminalLine(
+      `command not found: ${rawCommand}`,
+      'terminal-error'
+    );
+
+    addTerminalLine(
+      "type 'help' for available commands",
+      'muted'
+    );
+  };
+
+  const createTerminalInput = () => {
+    const row = document.createElement('p');
+    row.className = 'terminal-input-row';
+
+    const prompt = document.createElement('b');
+    prompt.textContent = '$';
+
+    const input = document.createElement('input');
+    input.className = 'terminal-input';
+    input.type = 'text';
+    input.autocomplete = 'off';
+    input.autocapitalize = 'off';
+    input.spellcheck = false;
+    input.setAttribute('aria-label', 'Terminal command input');
+
+    row.append(prompt, document.createTextNode(' '), input);
+    terminalBody.appendChild(row);
+
+    input.addEventListener('keydown', event => {
+      if (event.key === 'Enter') {
+        const command = input.value.trim();
+
+        if (command) {
+          commandHistory.push(command);
+          historyIndex = commandHistory.length;
+          runCommand(command);
+        }
+
+        row.remove();
+        createTerminalInput();
+        return;
+      }
+
+      if (event.key === 'ArrowUp') {
+        event.preventDefault();
+
+        if (!commandHistory.length) {
+          return;
+        }
+
+        historyIndex = Math.max(0, historyIndex - 1);
+        input.value = commandHistory[historyIndex];
+      }
+
+      if (event.key === 'ArrowDown') {
+        event.preventDefault();
+
+        if (!commandHistory.length) {
+          return;
+        }
+
+        historyIndex = Math.min(
+          commandHistory.length,
+          historyIndex + 1
+        );
+
+        input.value =
+          historyIndex === commandHistory.length
+            ? ''
+            : commandHistory[historyIndex];
+      }
+
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
+        event.preventDefault();
+        clearTerminal();
+        createTerminalInput();
+      }
+
+      if (event.key === 'Tab') {
+        event.preventDefault();
+
+        const value = input.value.trim().toLowerCase();
+
+        if (!value) {
+          return;
+        }
+
+        const matches = Object.keys(terminalCommands)
+          .filter(command => command.startsWith(value));
+
+        if (matches.length === 1) {
+          input.value = matches[0];
+        }
+      }
+    });
+
+    return input;
+  };
+
+  terminalBody.addEventListener('click', () => {
+    const input = terminalBody.querySelector('.terminal-input');
+
+    if (input) {
+      input.focus();
+    }
+  });
+
+  const existingTypeLine = terminalBody.querySelector('.type-line');
+
+  if (existingTypeLine) {
+    existingTypeLine.closest('p')?.remove();
+  }
+
+  const terminalInput = createTerminalInput();
+
+  window.setTimeout(() => {
+    terminalInput.focus();
+  }, 300);
+}
