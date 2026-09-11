@@ -765,6 +765,46 @@ architectureContent
 
 
 /*
+ * Project story
+ */
+
+const storyGrid =
+  document.getElementById("storyGrid");
+
+if (storyGrid && study.story) {
+
+  const storyItems = [
+    ["WHY IT EXISTS", study.story.problem],
+    ["THE APPROACH", study.story.approach],
+    ["SYSTEM PRINCIPLE", study.story.principle]
+  ];
+
+  storyGrid.innerHTML =
+    storyItems.map((item, i) => `
+      <article class="story-item">
+
+        <span class="story-index">
+          ${String(i + 1).padStart(2, "0")}
+        </span>
+
+        <div class="story-content">
+
+          <h3>
+            ${item[0]}
+          </h3>
+
+          <p>
+            ${item[1]}
+          </p>
+
+        </div>
+
+      </article>
+    `).join("");
+}
+
+
+/*
  * Current state
  */
 

@@ -18,6 +18,17 @@ const CASE_STUDIES = {
     overview:
       "NEXUS is being built as a personal AI operating layer rather than a single-purpose chatbot. The system brings together multimodal interaction, an AI engine, orchestration, persistent memory and tools behind one modular architecture.",
 
+    story: {
+      problem:
+        "Most personal AI tools are built around isolated conversations. They can generate useful responses, but they lack a durable system for memory, orchestration and action.",
+
+      approach:
+        "NEXUS treats personal AI as a modular operating layer. Multimodal input feeds an orchestration layer that coordinates intelligence, persistent memory and tools before producing an interaction.",
+
+      principle:
+        "Separate intelligence from orchestration, memory and execution so the system can evolve without becoming one tightly coupled application."
+    },
+
     architecture: [
       ["MULTI-MODAL I/O", "Input and interaction layer"],
       ["ORCHESTRATOR", "Coordinates system execution"],
@@ -92,6 +103,17 @@ const CASE_STUDIES = {
 
     overview:
       "Career OS is designed around a persistent Career Profile that becomes the central context for a collection of specialized AI agents. Instead of treating each job application as an isolated prompt, the system is structured as an operating layer for the broader career workflow.",
+
+    story: {
+      problem:
+        "Job applications are often handled as disconnected tasks: find a role, rewrite a resume, prepare for an interview and repeat. That makes it difficult to maintain consistent career context across the workflow.",
+
+      approach:
+        "Career OS establishes a persistent Career Profile and places specialized agents behind a central orchestrator. Each workflow can focus on one responsibility while still operating from shared career context.",
+
+      principle:
+        "Context first, specialization second. Give every workflow a consistent source of truth instead of building one monolithic career assistant."
+    },
 
     architecture: [
       ["CAREER PROFILE", "Central career context"],
@@ -238,6 +260,18 @@ const CASE_STUDIES = {
   },
 
   "glitch-over": {
+    story: {
+      problem:
+        "Creator discovery becomes difficult to scale when information is scattered across streaming platforms and each platform exposes data differently.",
+
+      approach:
+        "GlitchOver turns discovery into a staged pipeline that moves creator records through discovery, normalization, intake, enrichment, scoring and export before they become outreach-ready leads.",
+
+      principle:
+        "Separate discovery from downstream processing so external platform differences, retries and enrichment logic do not become one tightly coupled workflow."
+    },
+
+
     label: "CREATOR INTELLIGENCE · OUTREACH ENGINE",
     title: "GLITCH",
     titleAccent: "OVER",
@@ -350,6 +384,18 @@ const CASE_STUDIES = {
 
 
   "astro-trading-engine": {
+    story: {
+      problem:
+        "Experimental market analysis becomes difficult to evaluate when unconventional signals are mixed directly into the final output without a clear processing pipeline.",
+
+      approach:
+        "Astro Trading Engine keeps market data and planetary-position data as separate inputs, processes them through a signal engine and ML experimentation layer, then converts the resulting signals into structured market sentiment.",
+
+      principle:
+        "Keep experimental inputs observable and separable so signal behavior can be compared before treating the output as meaningful."
+    },
+
+
     label: "FINANCIAL SIGNALS · AI SYSTEM",
     title: "ASTRO",
     titleAccent: "TRADING ENGINE",
@@ -459,6 +505,18 @@ const CASE_STUDIES = {
 
 
   "credit-card-intelligence": {
+    story: {
+      problem:
+        "Credit-card selection can become a generic comparison exercise when recommendations ignore the user's financial profile and actual spending behavior.",
+
+      approach:
+        "Credit Card Intelligence treats card selection as a scoring problem, combining profile information, spending signals and structured card data before ranking candidate recommendations.",
+
+      principle:
+        "Make recommendation logic explicit and profile-driven so candidate products can be compared systematically rather than selected arbitrarily."
+    },
+
+
     label: "FINTECH · RECOMMENDATION SYSTEM",
     title: "CREDIT CARD",
     titleAccent: "INTELLIGENCE",
@@ -568,6 +626,18 @@ const CASE_STUDIES = {
 
 
   "tradelead-ai": {
+    story: {
+      problem:
+        "Trade and importer lead generation becomes noisy when web discovery, extraction and filtering are handled as one undifferentiated search process.",
+
+      approach:
+        "TradeLead AI separates discovery, extraction, filtering, deduplication, normalization and export into explicit processing stages supported by worker-oriented execution.",
+
+      principle:
+        "Treat lead generation as a data pipeline so noisy sources can be progressively transformed into structured, reusable records."
+    },
+
+
     label: "DATA INTELLIGENCE · LEAD GENERATION",
     title: "TRADELEAD",
     titleAccent: "AI",
@@ -677,6 +747,18 @@ const CASE_STUDIES = {
 
 
   "student-support-ai": {
+    story: {
+      problem:
+        "Student support often depends on repetitive questions and fragmented interactions, making it difficult to combine conversational assistance with structured administrative and risk workflows.",
+
+      approach:
+        "Student Support AI combines a Dialogflow conversational layer with a backend, persistent interaction data, administrative tooling and student-risk workflows.",
+
+      principle:
+        "Keep conversational intelligence separate from application and persistence layers so support capabilities can evolve without coupling the entire system."
+    },
+
+
     label: "EDTECH · CONVERSATIONAL AI",
     title: "STUDENT",
     titleAccent: "SUPPORT AI",

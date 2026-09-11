@@ -2717,3 +2717,143 @@
     transition:none !important;
   }
 }
+
+
+/* =========================================================
+   CASE STUDY — PROJECT STORY
+   ========================================================= */
+
+.story-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  border-top:1px solid var(--line);
+  border-left:1px solid var(--line);
+}
+
+.story-item{
+  min-height:270px;
+  padding:30px;
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  display:grid;
+  grid-template-rows:auto 1fr;
+  gap:55px;
+  transition:background .3s ease;
+}
+
+.story-item:hover{
+  background:#090909;
+}
+
+.story-index{
+  color:var(--lime);
+  font:600 10px var(--mono);
+}
+
+.story-content{
+  align-self:end;
+}
+
+.story-content h3{
+  margin:0 0 16px;
+  color:#ddd;
+  font:600 13px/1.3 var(--mono);
+  letter-spacing:.03em;
+}
+
+.story-content p{
+  margin:0;
+  max-width:390px;
+  color:#777;
+  font-size:13px;
+  line-height:1.8;
+}
+
+@media(max-width:900px){
+  .story-grid{
+    grid-template-columns:1fr;
+  }
+
+  .story-item{
+    min-height:220px;
+  }
+}
+
+@media(max-width:800px){
+  .story-item{
+    padding:25px 20px;
+    gap:40px;
+  }
+}
+
+/* =========================================================
+   CASE STUDY — PROJECT STORY POLISH
+   ========================================================= */
+
+.case-story-section{
+  position:relative;
+}
+
+.case-story-section .case-label{
+  margin-bottom:0;
+}
+
+.story-grid{
+  grid-template-columns:1fr 1fr 1fr;
+}
+
+.story-item{
+  position:relative;
+  overflow:hidden;
+  background:#060606;
+}
+
+.story-item::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:2px;
+  height:100%;
+  background:var(--lime);
+  transform:scaleY(0);
+  transform-origin:top;
+  transition:transform .35s ease;
+}
+
+.story-item:hover::before{
+  transform:scaleY(1);
+}
+
+.story-item:hover .story-index{
+  text-shadow:0 0 16px rgba(200,255,61,.25);
+}
+
+.story-content h3{
+  transition:color .25s ease;
+}
+
+.story-item:hover .story-content h3{
+  color:var(--lime);
+}
+
+.story-content p{
+  max-width:420px;
+}
+
+@media(max-width:900px){
+  .story-grid{
+    grid-template-columns:1fr;
+  }
+
+  .story-item{
+    min-height:210px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .story-item::before,
+  .story-content h3{
+    transition:none;
+  }
+}
