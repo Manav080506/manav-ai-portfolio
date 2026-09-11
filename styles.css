@@ -1171,3 +1171,151 @@
   }
 
 }
+
+
+
+/* =========================================================
+   MOBILE PROJECT CARDS — DEFINITIVE FLOW FIX
+   Uses the actual homepage markup:
+   .architecture / .agent-row / .pipeline / .tags
+   / .case-study-link
+   ========================================================= */
+
+@media (max-width: 520px){
+
+  .project-card{
+    position: relative !important;
+    display: block !important;
+    min-height: 0 !important;
+    height: auto !important;
+    padding: 30px 28px 32px !important;
+    overflow: hidden !important;
+  }
+
+  /* Keep the normal card content in document flow */
+  .project-card .project-top,
+  .project-card .project-type,
+  .project-card h3,
+  .project-card .project-desc{
+    position: relative !important;
+    z-index: 2 !important;
+  }
+
+  .project-card h3{
+    margin-top: 0 !important;
+    margin-bottom: 22px !important;
+  }
+
+  .project-card .project-desc{
+    margin-bottom: 28px !important;
+  }
+
+  /* Architecture / agent / pipeline are normal content rows */
+  .project-card .architecture,
+  .project-card .agent-row,
+  .project-card .pipeline{
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    margin: 0 0 24px !important;
+
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: 7px !important;
+
+    z-index: 2 !important;
+  }
+
+  /* Architecture nodes */
+  .project-card .architecture > div{
+    position: relative !important;
+    flex: 0 0 auto !important;
+    margin: 0 !important;
+  }
+
+  .project-card .architecture > i{
+    position: relative !important;
+    flex: 0 0 auto !important;
+    margin: 0 !important;
+  }
+
+  /* Agent nodes */
+  .project-card .agent-row > span{
+    position: relative !important;
+    flex: 0 0 auto !important;
+    margin: 0 !important;
+  }
+
+  /* Pipeline nodes */
+  .project-card .pipeline > span{
+    position: relative !important;
+    flex: 0 0 auto !important;
+    margin: 0 !important;
+  }
+
+  /* Tags MUST come after the visual system */
+  .project-card .tags{
+    position: relative !important;
+    inset: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
+
+    margin: 0 0 24px !important;
+    padding: 0 !important;
+
+    z-index: 3 !important;
+  }
+
+  .project-card .tags span{
+    position: relative !important;
+    margin: 0 !important;
+  }
+
+  /* Case Study is ALWAYS the final row */
+  .project-card .case-study-link{
+    position: relative !important;
+    inset: auto !important;
+
+    display: inline-flex !important;
+    align-items: center !important;
+
+    width: auto !important;
+    height: auto !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+
+    z-index: 5 !important;
+
+    white-space: nowrap !important;
+  }
+
+  /* Cards with no visual system still get clean spacing */
+  .project-card > .case-study-link:first-child,
+  .project-card > .case-study-link:last-child{
+    margin-top: 0 !important;
+  }
+
+  /* Remove any legacy absolute positioning from child visuals */
+  .project-card .architecture *,
+  .project-card .agent-row *,
+  .project-card .pipeline *,
+  .project-card .tags *{
+    float: none !important;
+  }
+
+}
+
+
+/* V1-H: contain hero decorative overflow without affecting fixed utilities */
+.hero {
+  overflow-x: clip;
+}
