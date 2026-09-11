@@ -41,7 +41,7 @@ const PROJECTS = [
     "description": "Production-deployed creator discovery and outreach engine that discovers, normalizes, enriches, scores and exports creator leads.",
     "type": "AI SYSTEM",
     "status": "CURRENT",
-    "repo": "https://github.com/Manav080506/glitchover-creator-finder",
+    "repo": "",
     "tags": [
       "Python",
       "JavaScript",
@@ -60,7 +60,7 @@ const PROJECTS = [
     "description": "AI-integrated financial signal system combining planetary-position data with market signals to generate daily trading sentiment.",
     "type": "AI SYSTEM",
     "status": "CURRENT",
-    "repo": "https://github.com/Manav080506/astro-trading-engine",
+    "repo": "",
     "tags": [
       "Python",
       "Rust",
@@ -78,7 +78,7 @@ const PROJECTS = [
     "description": "Intelligent recommendation platform that analyzes financial profiles and spending patterns to match suitable credit-card products using algorithmic scoring.",
     "type": "AI SYSTEM",
     "status": "CURRENT",
-    "repo": "https://github.com/Manav080506/credit-card-intelligence",
+    "repo": "",
     "tags": [
       "Python",
       "JavaScript",
@@ -96,7 +96,7 @@ const PROJECTS = [
     "description": "Global importer discovery engine using distributed crawlers, extraction workers, filtering and deduplication to generate structured export leads.",
     "type": "AI SYSTEM",
     "status": "CURRENT",
-    "repo": "https://github.com/Manav080506/tradelead-ai",
+    "repo": "",
     "tags": [
       "Python",
       "Crawlers",
@@ -114,7 +114,7 @@ const PROJECTS = [
     "description": "Student support backend combining conversational assistance, FAQ intelligence, chat logging, admin tooling and student-risk prediction workflows.",
     "type": "AI SYSTEM",
     "status": "CURRENT",
-    "repo": "https://github.com/Manav080506/student-support-backend",
+    "repo": "",
     "tags": [
       "JavaScript",
       "Node.js",

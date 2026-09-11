@@ -1,0 +1,137 @@
+/* =========================================================
+   RESUME UTILITY
+   ========================================================= */
+
+.resume-launcher {
+  flex: 0 0 auto;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+
+  min-height: 48px;
+  padding: 0 17px;
+
+  border: 1px solid #35362f;
+  background: rgba(5, 5, 5, .94);
+  color: #ddd;
+
+  font: 600 10px var(--mono);
+  letter-spacing: .08em;
+  text-decoration: none;
+  white-space: nowrap;
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  transition:
+    border-color .25s ease,
+    color .25s ease,
+    background .25s ease,
+    transform .25s ease,
+    box-shadow .25s ease;
+}
+
+.resume-launcher-icon {
+  color: var(--lime);
+  font-size: 11px;
+  line-height: 1;
+}
+
+.resume-launcher-label {
+  white-space: nowrap;
+}
+
+.resume-launcher:hover {
+  border-color: var(--lime);
+  color: var(--lime);
+  background: rgba(10, 10, 10, .97);
+  transform: translateY(-2px);
+  box-shadow: 0 0 28px rgba(200, 255, 61, .08);
+}
+
+.resume-launcher:focus-visible {
+  outline: 1px solid var(--lime);
+  outline-offset: 4px;
+}
+
+/* =========================================================
+   HEADER LAYOUT
+   ========================================================= */
+
+.nav > nav {
+  margin-left: auto;
+}
+
+.nav > .nav-cta {
+  margin-left: 22px;
+}
+
+.nav > .resume-launcher {
+  margin-left: 10px;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+  .nav {
+    gap: 14px;
+  }
+
+  .nav > nav {
+    gap: 20px;
+  }
+
+  .nav > .nav-cta {
+    margin-left: 8px;
+  }
+
+  .nav > .resume-launcher {
+    margin-left: 0;
+  }
+
+  .resume-launcher {
+    min-height: 44px;
+    padding: 0 13px;
+  }
+
+  .resume-launcher-label {
+    display: none;
+  }
+}
+
+@media (max-width: 800px) {
+  .nav {
+    padding: 0 20px;
+  }
+
+  .nav > nav {
+    display: none;
+  }
+
+  .nav > .nav-cta {
+    margin-left: auto;
+  }
+
+  .nav > .resume-launcher {
+    margin-left: 0;
+  }
+
+  .resume-launcher {
+    min-height: 40px;
+    padding: 0 12px;
+  }
+
+  .resume-launcher-label {
+    display: inline;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .resume-launcher {
+    transition: none;
+  }
+}

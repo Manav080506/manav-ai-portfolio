@@ -445,7 +445,7 @@ const CASE_STUDIES = {
     philosophy:
       "Discover → Normalize → Enrich → Score → Export → Outreach.",
 
-    repo: "https://github.com/Manav080506/glitchover-creator-finder"
+    repo: ""
   },
 
 
@@ -588,7 +588,7 @@ const CASE_STUDIES = {
     philosophy:
       "Collect → Model → Compare → Generate Signal → Iterate.",
 
-    repo: "https://github.com/Manav080506/astro-trading-engine"
+    repo: ""
   },
 
 
@@ -731,7 +731,7 @@ const CASE_STUDIES = {
     philosophy:
       "Understand → Score → Rank → Recommend.",
 
-    repo: "https://github.com/Manav080506/credit-card-intelligence"
+    repo: ""
   },
 
 
@@ -874,7 +874,7 @@ const CASE_STUDIES = {
     philosophy:
       "Discover → Extract → Filter → Dedup → Export.",
 
-    repo: "https://github.com/Manav080506/tradelead-ai"
+    repo: ""
   },
 
 
@@ -1018,7 +1018,7 @@ const CASE_STUDIES = {
     philosophy:
       "Listen → Understand → Support → Record → Improve.",
 
-    repo: "https://github.com/Manav080506/student-support-backend"
+    repo: ""
   }
 
 };
