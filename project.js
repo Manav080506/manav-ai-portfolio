@@ -20,6 +20,7 @@ const CASE_STUDIES = {
 
   "nexus-ai-butler": {
     label: "MULTIMODAL AI · PERSONAL SYSTEM",
+    visualType: "SYSTEM",
     title: "NEXUS",
     titleAccent: "AI BUTLER",
 
@@ -95,6 +96,7 @@ const CASE_STUDIES = {
 
   "career-os": {
     label: "AGENTIC AI · CAREER INTELLIGENCE",
+    visualType: "AGENT",
     title: "CAREER",
     titleAccent: "OS",
 
@@ -114,6 +116,49 @@ const CASE_STUDIES = {
       ["INTERVIEWER", "Interview preparation workflow"],
       ["CAREER INTELLIGENCE", "Combined career workflow output"]
     ],
+
+    agentGraph: {
+      center: [
+        "NOVA",
+        "Primary orchestration layer"
+      ],
+
+      context: [
+        "CAREER PROFILE",
+        "Persistent career context"
+      ],
+
+      agents: [
+        [
+          "NAVIGATOR",
+          "Career direction and opportunity navigation"
+        ],
+        [
+          "HUNTER",
+          "Job discovery workflow"
+        ],
+        [
+          "TAILOR",
+          "Resume customization workflow"
+        ],
+        [
+          "NETWORKER",
+          "Networking workflow"
+        ],
+        [
+          "INFLUENCER",
+          "Career presence and positioning"
+        ],
+        [
+          "INTERVIEWER",
+          "Interview preparation workflow"
+        ],
+        [
+          "NEGOTIATOR",
+          "Offer and negotiation workflow"
+        ]
+      ]
+    },
 
     systems: [
       {
@@ -207,6 +252,7 @@ const CASE_STUDIES = {
 
   "glitch-over": {
     label: "CREATOR INTELLIGENCE · OUTREACH ENGINE",
+    visualType: "PIPELINE",
     title: "GLITCH",
     titleAccent: "OVER",
 
@@ -319,6 +365,7 @@ const CASE_STUDIES = {
 
   "astro-trading-engine": {
     label: "FINANCIAL SIGNALS · AI SYSTEM",
+    visualType: "SIGNAL",
     title: "ASTRO",
     titleAccent: "TRADING ENGINE",
 
@@ -428,6 +475,7 @@ const CASE_STUDIES = {
 
   "credit-card-intelligence": {
     label: "FINTECH · RECOMMENDATION SYSTEM",
+    visualType: "SCORING",
     title: "CREDIT CARD",
     titleAccent: "INTELLIGENCE",
 
@@ -537,6 +585,7 @@ const CASE_STUDIES = {
 
   "tradelead-ai": {
     label: "DATA INTELLIGENCE · LEAD GENERATION",
+    visualType: "PIPELINE",
     title: "TRADELEAD",
     titleAccent: "AI",
 
@@ -646,6 +695,7 @@ const CASE_STUDIES = {
 
   "student-support-ai": {
     label: "EDTECH · CONVERSATIONAL AI",
+    visualType: "CONVERSATIONAL",
     title: "STUDENT",
     titleAccent: "SUPPORT AI",
 
@@ -825,27 +875,627 @@ document.getElementById("overviewText").textContent =
  * Architecture
  */
 
-document.getElementById("architectureContent").innerHTML =
-  study.architecture.map((item, i) => `
-    <div class="arch-node">
-      <span class="arch-number">
-        ${String(i + 1).padStart(2, "0")}
-      </span>
+const architectureContent =
+  document.getElementById("architectureContent");
 
-      <strong>${item[0]}</strong>
-
-      <small>${item[1]}</small>
-    </div>
-
-    ${
-      i < study.architecture.length - 1
-        ? '<div class="arch-arrow">↓</div>'
-        : ""
-    }
-  `).join("");
+const visualLabels = {
+  SYSTEM: "● SYSTEM FLOW",
+  AGENT: "● AGENT FLOW",
+  PIPELINE: "● PIPELINE FLOW",
+  SIGNAL: "● SIGNAL FLOW",
+  SCORING: "● SCORING FLOW",
+  CONVERSATIONAL: "● CONVERSATIONAL FLOW"
+};
 
 document.getElementById("architectureStatus").textContent =
-  "● CURRENT";
+  visualLabels[study.visualType] || "● SYSTEM FLOW";
+
+
+function renderArchitecture() {
+
+  architectureContent.innerHTML = `
+    <div class="architecture-flow">
+
+      ${study.architecture.map((item, i) => `
+        <div class="architecture-step reveal">
+
+          <div class="architecture-node">
+
+            <div class="architecture-node-top">
+              <span class="arch-number">
+                ${String(i + 1).padStart(2, "0")}
+              </span>
+
+              <span class="architecture-node-index">
+                SYSTEM / ${String(i + 1).padStart(2, "0")}
+              </span>
+            </div>
+
+            <strong>
+              ${item[0]}
+            </strong>
+
+            <small>
+              ${item[1]}
+            </small>
+
+            <span class="architecture-node-pulse"></span>
+
+          </div>
+
+          ${
+            i < study.architecture.length - 1
+              ? `
+                <div class="architecture-connector">
+                  <span></span>
+                </div>
+              `
+              : ""
+          }
+
+        </div>
+      `).join("")}
+
+    </div>
+  `;
+
+}
+
+
+function renderAgentGraph() {
+
+  const graph = study.agentGraph;
+
+  architectureContent.innerHTML = `
+    <div class="agent-graph">
+
+      <div class="agent-graph-grid"></div>
+
+      <div class="agent-context">
+
+        <span class="agent-context-label">
+          CONTEXT
+        </span>
+
+        <strong>
+          ${graph.context[0]}
+        </strong>
+
+        <small>
+          ${graph.context[1]}
+        </small>
+
+      </div>
+
+
+      <div class="agent-node-center">
+
+        <span class="agent-node-type">
+          ORCHESTRATOR
+        </span>
+
+        <strong>
+          ${graph.center[0]}
+        </strong>
+
+        <small>
+          ${graph.center[1]}
+        </small>
+
+        <span class="agent-node-core"></span>
+
+      </div>
+
+
+      <div class="agent-connections">
+
+        ${graph.agents.map((_, i) => `
+          <div
+            class="agent-connection agent-connection-${i + 1}"
+            aria-hidden="true"
+          >
+            <span></span>
+          </div>
+        `).join("")}
+
+      </div>
+
+
+      <div class="agent-satellite-layer">
+
+        ${graph.agents.map((item, i) => `
+          <div
+            class="agent-satellite agent-satellite-${i + 1} reveal"
+          >
+
+            <div class="agent-satellite-header">
+
+              <span>
+                ${String(i + 1).padStart(2, "0")}
+              </span>
+
+              <small>
+                AGENT
+              </small>
+
+            </div>
+
+            <strong>
+              ${item[0]}
+            </strong>
+
+            <p>
+              ${item[1]}
+            </p>
+
+            <span class="agent-satellite-status">
+              ACTIVE
+            </span>
+
+          </div>
+        `).join("")}
+
+      </div>
+
+    </div>
+  `;
+
+}
+
+
+function renderSignal() {
+
+  const stages = study.architecture;
+
+  const market = stages[0];
+  const planetary = stages[1];
+  const processing = stages.slice(2);
+
+  architectureContent.innerHTML = `
+    <div class="signal-system">
+
+      <div class="signal-inputs">
+
+        <div class="signal-input-card reveal">
+          <span>INPUT / 01</span>
+          <strong>${market[0]}</strong>
+          <small>${market[1]}</small>
+        </div>
+
+        <div class="signal-input-card reveal">
+          <span>INPUT / 02</span>
+          <strong>${planetary[0]}</strong>
+          <small>${planetary[1]}</small>
+        </div>
+
+      </div>
+
+
+      <div class="signal-merge">
+        <span></span>
+        <span></span>
+        <i></i>
+      </div>
+
+
+      <div class="signal-processing">
+
+        ${processing.map((item, i) => `
+          <div class="signal-processing-node reveal">
+
+            <div class="signal-processing-header">
+              <span>
+                ${String(i + 3).padStart(2, "0")}
+              </span>
+
+              <small>
+                SIGNAL STAGE
+              </small>
+            </div>
+
+            <strong>
+              ${item[0]}
+            </strong>
+
+            <p>
+              ${item[1]}
+            </p>
+
+            <span class="signal-live">
+              LIVE
+            </span>
+
+          </div>
+
+          ${
+            i < processing.length - 1
+              ? `
+                <div class="signal-processing-connector">
+                  <span></span>
+                </div>
+              `
+              : ""
+          }
+        `).join("")}
+
+      </div>
+
+
+      <div class="signal-terminal-output">
+
+        <span></span>
+
+        <div>
+          <small>OUTPUT</small>
+          <strong>DAILY MARKET SENTIMENT</strong>
+        </div>
+
+        <span></span>
+
+      </div>
+
+    </div>
+  `;
+
+}
+
+
+function renderScoring() {
+
+  const stages = study.architecture;
+
+  const inputs = stages.slice(0, 3);
+  const scoring = stages[3];
+  const ranking = stages[4];
+  const output = stages[5];
+
+  architectureContent.innerHTML = `
+    <div class="scoring-system">
+
+      <div class="scoring-inputs">
+
+        ${inputs.map((item, i) => `
+          <div class="scoring-input-card reveal">
+
+            <span>
+              INPUT / ${String(i + 1).padStart(2, "0")}
+            </span>
+
+            <strong>
+              ${item[0]}
+            </strong>
+
+            <small>
+              ${item[1]}
+            </small>
+
+          </div>
+        `).join("")}
+
+      </div>
+
+
+      <div class="scoring-merge">
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+        <i></i>
+
+      </div>
+
+
+      <div class="scoring-core reveal">
+
+        <div class="scoring-core-header">
+
+          <span>
+            MODEL / 04
+          </span>
+
+          <small>
+            SCORING ENGINE
+          </small>
+
+        </div>
+
+        <strong>
+          ${scoring[0]}
+        </strong>
+
+        <p>
+          ${scoring[1]}
+        </p>
+
+        <div class="scoring-bars">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+      </div>
+
+
+      <div class="scoring-connector">
+        <span></span>
+      </div>
+
+
+      <div class="scoring-result reveal">
+
+        <span>
+          STAGE / 05
+        </span>
+
+        <strong>
+          ${ranking[0]}
+        </strong>
+
+        <small>
+          ${ranking[1]}
+        </small>
+
+      </div>
+
+
+      <div class="scoring-connector">
+        <span></span>
+      </div>
+
+
+      <div class="scoring-output reveal">
+
+        <span>
+          OUTPUT / 06
+        </span>
+
+        <strong>
+          ${output[0]}
+        </strong>
+
+        <small>
+          ${output[1]}
+        </small>
+
+      </div>
+
+    </div>
+  `;
+
+}
+
+
+function renderConversational() {
+
+  const stages = study.architecture;
+
+  const student = stages[0];
+  const dialogflow = stages[1];
+  const backend = stages[2];
+  const downstream = stages.slice(3);
+
+  architectureContent.innerHTML = `
+    <div class="conversation-system">
+
+      <div class="conversation-user reveal">
+
+        <span>
+          INPUT / 01
+        </span>
+
+        <strong>
+          ${student[0]}
+        </strong>
+
+        <small>
+          ${student[1]}
+        </small>
+
+      </div>
+
+
+      <div class="conversation-connector">
+        <span></span>
+      </div>
+
+
+      <div class="conversation-ai reveal">
+
+        <div class="conversation-ai-header">
+
+          <span>
+            AI / 02
+          </span>
+
+          <small>
+            CONVERSATIONAL LAYER
+          </small>
+
+        </div>
+
+        <strong>
+          ${dialogflow[0]}
+        </strong>
+
+        <p>
+          ${dialogflow[1]}
+        </p>
+
+        <span class="conversation-ai-pulse"></span>
+
+      </div>
+
+
+      <div class="conversation-connector">
+        <span></span>
+      </div>
+
+
+      <div class="conversation-backend reveal">
+
+        <span>
+          CORE / 03
+        </span>
+
+        <strong>
+          ${backend[0]}
+        </strong>
+
+        <small>
+          ${backend[1]}
+        </small>
+
+      </div>
+
+
+      <div class="conversation-branches">
+
+        ${downstream.map((item, i) => `
+          <div class="conversation-branch reveal">
+
+            <div class="conversation-branch-line">
+              <span></span>
+            </div>
+
+            <div class="conversation-branch-card">
+
+              <div>
+                <span>
+                  ${String(i + 4).padStart(2, "0")}
+                </span>
+
+                <small>
+                  SYSTEM
+                </small>
+              </div>
+
+              <strong>
+                ${item[0]}
+              </strong>
+
+              <p>
+                ${item[1]}
+              </p>
+
+            </div>
+
+          </div>
+        `).join("")}
+
+      </div>
+
+
+    </div>
+  `;
+
+}
+
+
+function renderPipeline() {
+
+  architectureContent.innerHTML = `
+    <div class="pipeline-flow">
+
+      <div class="pipeline-entry">
+        <span class="pipeline-entry-line"></span>
+        INPUT
+      </div>
+
+      ${study.architecture.map((item, i) => `
+        <div class="pipeline-step reveal">
+
+          <div class="pipeline-connector">
+            <span></span>
+          </div>
+
+          <div class="pipeline-node">
+
+            <div class="pipeline-node-header">
+
+              <span class="pipeline-number">
+                ${String(i + 1).padStart(2, "0")}
+              </span>
+
+              <span class="pipeline-stage">
+                STAGE / ${String(i + 1).padStart(2, "0")}
+              </span>
+
+            </div>
+
+            <strong>
+              ${item[0]}
+            </strong>
+
+            <small>
+              ${item[1]}
+            </small>
+
+            <span class="pipeline-status">
+              READY
+            </span>
+
+          </div>
+
+        </div>
+      `).join("")}
+
+      <div class="pipeline-output">
+        <span class="pipeline-output-line"></span>
+        OUTPUT
+      </div>
+
+    </div>
+  `;
+
+}
+
+
+if (study.visualType === "PIPELINE") {
+  renderPipeline();
+} else if (study.visualType === "AGENT") {
+  renderAgentGraph();
+} else if (study.visualType === "SIGNAL") {
+  renderSignal();
+} else if (study.visualType === "SCORING") {
+  renderScoring();
+} else if (study.visualType === "CONVERSATIONAL") {
+  renderConversational();
+} else {
+  renderArchitecture();
+}
+
+
+/*
+ * Reveal dynamically-rendered architecture nodes.
+ */
+
+const architectureObserver =
+  new IntersectionObserver(
+    entries => {
+
+      entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          architectureObserver.unobserve(entry.target);
+        }
+
+      });
+
+    },
+    { threshold: 0.12 }
+  );
+
+
+architectureContent
+  .querySelectorAll(".reveal")
+  .forEach(node => architectureObserver.observe(node));
 
 
 /*
