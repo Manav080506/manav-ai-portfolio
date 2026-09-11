@@ -14,7 +14,8 @@ const PROJECTS = [
       "ChromaDB",
       "Next.js"
     ],
-    "architecture": "ORCHESTRATOR"
+    "architecture": "ORCHESTRATOR",
+    "visualType": "SYSTEM"
   },
   {
     "number": 2,
@@ -30,7 +31,8 @@ const PROJECTS = [
       "LLMs",
       "FastAPI"
     ],
-    "architecture": ""
+    "architecture": "",
+    "visualType": "AGENT"
   },
   {
     "number": 3,
@@ -48,7 +50,8 @@ const PROJECTS = [
       "ML",
       "GitHub Actions"
     ],
-    "architecture": "DISCOVER \u2192 NORMALIZE \u2192 ENRICH \u2192 SCORE \u2192 OUTREACH"
+    "architecture": "DISCOVER \u2192 NORMALIZE \u2192 ENRICH \u2192 SCORE \u2192 OUTREACH",
+    "visualType": "PIPELINE"
   },
   {
     "number": 4,
@@ -65,7 +68,8 @@ const PROJECTS = [
       "PM2",
       "Financial APIs"
     ],
-    "architecture": "PYTHON ML"
+    "architecture": "PYTHON ML",
+    "visualType": "SIGNAL"
   },
   {
     "number": 5,
@@ -82,7 +86,8 @@ const PROJECTS = [
       "REST API",
       "Scoring"
     ],
-    "architecture": ""
+    "architecture": "",
+    "visualType": "SCORING"
   },
   {
     "number": 6,
@@ -99,7 +104,8 @@ const PROJECTS = [
       "REST API",
       "Data Pipelines"
     ],
-    "architecture": "DISCOVER \u2192 EXTRACT \u2192 FILTER \u2192 DEDUP \u2192 EXPORT"
+    "architecture": "DISCOVER \u2192 EXTRACT \u2192 FILTER \u2192 DEDUP \u2192 EXPORT",
+    "visualType": "PIPELINE"
   },
   {
     "number": 7,
@@ -117,6 +123,7 @@ const PROJECTS = [
       "Dialogflow",
       "GitHub Actions"
     ],
-    "architecture": ""
+    "architecture": "",
+    "visualType": "CONVERSATIONAL"
   }
 ];

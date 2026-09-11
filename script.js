@@ -398,9 +398,6 @@ if (terminalBody) {
 
   const terminalInput = createTerminalInput();
 
-  window.setTimeout(() => {
-    terminalInput.focus();
-  }, 300);
 }
 
 /* ===== E5 — PAGE MOTION ===== */

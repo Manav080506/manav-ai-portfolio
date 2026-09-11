@@ -9,7 +9,6 @@ const CASE_STUDIES = {
 
   "nexus-ai-butler": {
     label: "MULTIMODAL AI · PERSONAL SYSTEM",
-    visualType: "SYSTEM",
     title: "NEXUS",
     titleAccent: "AI BUTLER",
 
@@ -85,7 +84,6 @@ const CASE_STUDIES = {
 
   "career-os": {
     label: "AGENTIC AI · CAREER INTELLIGENCE",
-    visualType: "AGENT",
     title: "CAREER",
     titleAccent: "OS",
 
@@ -241,7 +239,6 @@ const CASE_STUDIES = {
 
   "glitch-over": {
     label: "CREATOR INTELLIGENCE · OUTREACH ENGINE",
-    visualType: "PIPELINE",
     title: "GLITCH",
     titleAccent: "OVER",
 
@@ -354,7 +351,6 @@ const CASE_STUDIES = {
 
   "astro-trading-engine": {
     label: "FINANCIAL SIGNALS · AI SYSTEM",
-    visualType: "SIGNAL",
     title: "ASTRO",
     titleAccent: "TRADING ENGINE",
 
@@ -464,7 +460,6 @@ const CASE_STUDIES = {
 
   "credit-card-intelligence": {
     label: "FINTECH · RECOMMENDATION SYSTEM",
-    visualType: "SCORING",
     title: "CREDIT CARD",
     titleAccent: "INTELLIGENCE",
 
@@ -574,7 +569,6 @@ const CASE_STUDIES = {
 
   "tradelead-ai": {
     label: "DATA INTELLIGENCE · LEAD GENERATION",
-    visualType: "PIPELINE",
     title: "TRADELEAD",
     titleAccent: "AI",
 
@@ -684,7 +678,6 @@ const CASE_STUDIES = {
 
   "student-support-ai": {
     label: "EDTECH · CONVERSATIONAL AI",
-    visualType: "CONVERSATIONAL",
     title: "STUDENT",
     titleAccent: "SUPPORT AI",
 

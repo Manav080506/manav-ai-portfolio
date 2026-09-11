@@ -146,7 +146,7 @@ const visualLabels = {
 };
 
 document.getElementById("architectureStatus").textContent =
-  visualLabels[study.visualType] || "● SYSTEM FLOW";
+  visualLabels[project.visualType] || "● SYSTEM FLOW";
 
 
 function renderArchitecture() {
@@ -714,15 +714,15 @@ function renderPipeline() {
 }
 
 
-if (study.visualType === "PIPELINE") {
+if (project.visualType === "PIPELINE") {
   renderPipeline();
-} else if (study.visualType === "AGENT") {
+} else if (project.visualType === "AGENT") {
   renderAgentGraph();
-} else if (study.visualType === "SIGNAL") {
+} else if (project.visualType === "SIGNAL") {
   renderSignal();
-} else if (study.visualType === "SCORING") {
+} else if (project.visualType === "SCORING") {
   renderScoring();
-} else if (study.visualType === "CONVERSATIONAL") {
+} else if (project.visualType === "CONVERSATIONAL") {
   renderConversational();
 } else {
   renderArchitecture();
